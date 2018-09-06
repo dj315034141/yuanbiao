@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+/* 样式 */
+*{
+    padding: 0;
+    margin: 0;
+}
+#clock{
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+    border-radius:50%;
+    position: absolute;
+    left:450px;
+    top: 150px;
+}
+#a12{
+    position: absolute;
+    top:0;
+    left:90px;
+}
+#a6{
+    position: absolute;
+    top:180px;
+    left:90px;
+}
+#a3{
+    position: absolute;
+    top:90px;
+    left:180px;
+}
+#a9{
+    position: absolute;
+    top:90px;
+    left:0px;
+}
+#a1{
+    position: absolute;
+    top:10px;
+    left:145px;
+}
+#a2{
+    position: absolute;
+    top:45px;
+    left:175px;
+}
+#a5{
+    position: absolute;
+    top:165px;
+    left:145px;
+}
+#a4{
+    position: absolute;
+    top:135px;
+    left:170px;
+}
+#a11{
+    position: absolute;
+    top:10px;
+    left:45px;
+}
+#a10{
+    position: absolute;
+    top:45px;
+    left:15px;
+}
+#a8{
+    position: absolute;
+    top:135px;
+    left:15px;
+}
+#a7{
+    position: absolute;
+    top:170px;
+    left:45px;
+}
+#h{
+    width:7px;
+    height: 50px;
+    background-color: #725196;
+    position: absolute;
+    border-radius: 6px;
+    left: 97px;
+    top: 50px;
+}
+#m{
+    width:5px;
+    height: 65px;
+    background-color: #FDCB08;
+    position: absolute;
+    top: 35px;
+    left: 98px;
+    border-radius: 4px;
+}
+#s{
+    width:3px;
+    height: 70px;
+    background-color: #E75D53;
+    position: absolute;
+    top: 32px;
+    left: 99px;
+    border-radius: 2px;
+}
+#s,#m,#h{
+    transform-origin: center bottom;
+}
+</style>
+</head>
+<body>
+    <div id="clock">
+        <div id="h"></div>
+        <div id="m"></div>
+        <div id="s"></div>
+        <div id="a1">1</div>
+        <div id="a2">2</div>
+        <div id="a3">3</div>
+        <div id="a4">4</div>
+        <div id="a5">5</div>
+        <div id="a6">6</div>
+        <div id="a7">7</div>
+        <div id="a8">8</div>
+        <div id="a9">9</div>
+        <div id="a10">10</div>
+        <div id="a11">11</div>
+        <div id="a12">12</div>
+    </div>
+<script>
+    let divS=document.getElementById("s");
+    let divM=document.getElementById("m");
+    let divH=document.getElementById("h");
+/*时、分、秒针转动度数计算*/
+    function task(){
+    let now=new Date();
+    let s=now.getSeconds();
+    let sDeg=s/60*360;
+    let m=now.getMinutes();
+    let mDeg=(m*60+s)/3600*360;
+    let h=now.getHours();
+    let hDeg=(h*3600+m*60+s)/(3600*12)*360;
+    divS.style.transform=`rotate(${sDeg}deg)`;
+    divM.style.transform=`rotate(${mDeg}deg)`;
+    divH.style.transform=`rotate(${hDeg}deg)`;
+    }
+    task();
+    /*事件间隔事件*/
+    setInterval(task,1000);
+</script>
+</body>
+</html> 
